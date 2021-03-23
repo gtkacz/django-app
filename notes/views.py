@@ -5,6 +5,7 @@ def index(request):
     if request.method == 'POST':
         title = request.POST.get('titulo')
         content = request.POST.get('detalhes')
+        id = request.POST.get('id')
         note = Note(title=title, content=content)
         note.save()
         return redirect('index')
