@@ -2,27 +2,33 @@
 {% load static %}
 
 {% block content %}
-<img src="{% static 'notes/img/logo-getit.png' %}" />
-<p>Como o Post-it, mas com outro verbo</p>
 
-<form method="post">
+<main class="container">
+<form method="post" class="form-card form-card-style">
   {% csrf_token %}
-  <label for="titulo">Título</label>
-  <input id="titulo" type="text" name="titulo" />
-  <label for="detalhes">Detalhes</label>
-  <textarea id="detalhes" name="detalhes"></textarea>
-  <input type="submit" />
+  <input id="titulo" type="text" name="titulo" class="form-card-title" placeholder="Titulo"/>
+  <textarea id="detalhes" name="detalhes" class="autoresize" placeholder="Detalhes"></textarea>
+  <button class="btn" type="submit""><p class="texto-botao" name="form-btn">Criar</p></button>
 </form>
 
-<ul>
+<div class="card-container">
     {% for note in notes %}
-    <li>{{note.title}}
-        <ul>
-            <li>{{note.content}}</li>
-        </ul>
-    </li>
-    {% endfor %}
-</ul>
 
+    <div class="card">
+            <h3 class="card-title"><span class="card-underline">{{note.title}}</span></h3>
+
+            <div class="card-content"><span >{{note.content}}</span></div>
+
+            <input class="edit-content" type="image" src="static/notes/img/edit_black_24dp.svg" name='button-edit' title="Edite esse post-it" value="" onclick="editNote({id})" />
+            <form name="delete-form" method="post">
+                {% csrf_token %}
+                <input class="delete-content" type="image" src="static/notes/img/clear_black_24dp.svg" name='button-delete' title="Delete esse post-it" value=""/>
+                <input type="hidden" name="delete_note_id" value="{id}" />
+            </form>
+    </div>
+
+    {% endfor %}
+</div>
+</main>
 
 {% endblock %}
