@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Note
 
-
 def index(request):
     if request.method == 'POST':
         title = request.POST.get('titulo')
