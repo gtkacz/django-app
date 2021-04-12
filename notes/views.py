@@ -7,18 +7,20 @@ def index(request):
         content=request.POST.get('detalhes')
         id=request.POST.get('id')
         edit=request.POST.get('edit_note_id')
-        if (id==None or id=="None" or id=='') and (edit!=None and edit!="None" and edit!=''):
-            note=Note(title=title, content=content)
+        if not title:
+            note = Note.objects.get(id=id)
+            note.delete()
+        
+        elif id != None and id != "None" and id != '':
+            note = Note.objects.get(id=edit)
+            note.title = title
+            note.content = content
             note.save()
+        
         else:
-            if not title:
-                Note.objects.filter(id=id).delete()
-            else:
-                edit=Note.objects.get(id=edit)
-                edit.title=title
-                edit.content=content
-                edit.save()
-                
+            note = Note(title=title, content=content)
+            note.save()
+                    
         return redirect('index')
     else:
         all_notes=Note.objects.all()
