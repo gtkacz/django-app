@@ -24,7 +24,8 @@
             <form name="delete-form" method="post">
                 {% csrf_token %}
                 <input class="delete-content" type="image" src="static/notes/img/clear_black_24dp.svg" name='button-delete' title="Delete esse post-it" value=""/>
-                <input type="hidden" name="delete_note_id" value="{{note.id}}" />
+                {% comment %} <input type="hidden" name="delete_note_id" value="{{note.id}}" /> {% endcomment %}
+                <input type="hidden" id="id" name="id" value="{{note.id}}"/>
             </form>
     </div>
 
