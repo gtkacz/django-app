@@ -44,7 +44,7 @@ function editNote(id) {
 	var title = document.getElementsByName('id_title-' + id)[0].innerText
 	var content = document.getElementsByName('id_content-' + id)[0].innerText
 	document.getElementsByName("form-btn")[0].innerText = "Atualizar"
-	document.getElementsByName('id')[0].value = id
+	document.getElementsByName('edit_note_id')[0].value = id
 	document.getElementsByName('titulo')[0].value = title
 	document.getElementsByName('detalhes')[0].value = content
 }
