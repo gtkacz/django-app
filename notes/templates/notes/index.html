@@ -16,9 +16,9 @@
     {% for note in notes %}
 
     <div class="card">
-            <h3 class="card-title"><span class="card-underline" id="title" name="id_title-{id}">{{note.title}}</span></h3>
+            <h3 class="card-title"><span class="card-underline" name="id_title-{{note.id}}">{{note.title}}</span></h3>
 
-            <div class="card-content"><span id="details" name="id_content-{id}>{{note.content}}</span></div>
+            <div class="card-content"><span name="id_content-{{note.id}}>{{note.content}}</span></div>
 
             <input class="edit-content" type="image" src="static/notes/img/edit_black_24dp.svg" name='button-edit' title="Edite esse post-it" value="" onclick="editNote({{note.id}})" />
             <form name="delete-form" method="post">
