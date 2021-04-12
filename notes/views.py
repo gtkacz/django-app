@@ -7,7 +7,7 @@ def index(request):
         content=request.POST.get('detalhes')
         id=request.POST.get('id')
         edit=request.POST.get('edit_note_id')
-        if id==None or id=="None" or id=='':
+        if (id==None or id=="None" or id=='') and (edit!=None or edit!="None" or edit!=''):
             note=Note(title=title, content=content)
             note.save()
         else:
