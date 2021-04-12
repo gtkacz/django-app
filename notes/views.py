@@ -7,11 +7,12 @@ def index(request):
         content=request.POST.get('detalhes')
         id=request.POST.get('id')
         edit=request.POST.get('edit_note_id')
+        
         if not title:
             note = Note.objects.get(id=id)
             note.delete()
         
-        elif id != None and id != "None" and id != '':
+        elif edit != None and edit != "None" and edit != '':
             note = Note.objects.get(id=edit)
             note.title = title
             note.content = content
