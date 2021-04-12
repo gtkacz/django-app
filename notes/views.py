@@ -10,7 +10,7 @@ def index(request):
             note=Note(title=title, content=content)
             note.save()
         else:
-            if not title:
+            if title == None:
                 Note.objects.filter(id=id).delete()
             else:
                 edit=Note.objects.get(id=id)
